@@ -105,29 +105,29 @@ class TableViewController: UITableViewController {
         configuration.HTTPAdditionalHeaders = defaultHeaders
         
         if let lastUpdate = self.userDefaults.valueForKey("lastUpdate") {
-            print("i have last update")
+            // I have last update
             if isDateToday(lastUpdate as! NSDate) {
-                print("date is today so I'm just gonna return the cache")
+                // date is today so I'm just gonna return the cache
                 // Offline mode: use the cache (no matter how out of date), but don’t load from the network
                 configuration.requestCachePolicy = .ReturnCacheDataDontLoad
             } else if Reachability.isConnectedToNetwork() {
                 // Don’t use the cache
-                print("date is not today and I'm connecte to network, so I'll fetch new data by force")
+                // Date is not today and I'm connecte to network, so I'll fetch new data by force
                 configuration.requestCachePolicy = .ReloadIgnoringLocalCacheData
                 self.userDefaults.setObject(NSDate(), forKey: "lastUpdate")
                 self.userDefaults.synchronize()
             } else {
-                print("Not connected to network! I'm just gonna return cache!")
+                // Not connected to network! I'm just gonna return cache!
                 configuration.requestCachePolicy = .ReturnCacheDataDontLoad
             }
         } else if Reachability.isConnectedToNetwork() {
-            print("i dont have last update and i have connection so i'll fetch some data")
+            // I dont have last update and i have connection so i'll fetch some data
             // Use the cache (no matter how out of date), or if no cached response exists, load from the network
             configuration.requestCachePolicy = .ReloadIgnoringLocalCacheData
             self.userDefaults.setObject(NSDate(), forKey: "lastUpdate")
             self.userDefaults.synchronize()
         } else {
-            print("I don't have last update and I don't have connection so i'll just display a warning...")
+            // I don't have last update and I don't have connection so i'll just display a warning...
             let alert = UIAlertController(title: "No Internet Connection!", message: "This App Requires an Internet connection to Load the Data for the First Time. Please Connect to the Internet.", preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
@@ -190,11 +190,9 @@ class TableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailSegueIdentifier" {
-            print("inside segue")
             if let destinationViewController = segue.destinationViewController as? DetailViewController {
                 if let selectedCell = sender as? TableViewCell {
                     if let indexPath = tableView.indexPathForCell(selectedCell) {
-                        print("passing data")
                         let data = meteoriteCollection[indexPath.row]
                         destinationViewController.id = data.id
                         destinationViewController.longitude = data.longitude
