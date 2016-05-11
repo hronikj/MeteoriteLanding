@@ -14,6 +14,9 @@
 		0F202DB71CDCEE2800B31DA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F202DB51CDCEE2800B31DA6 /* LaunchScreen.storyboard */; };
 		0F202DC21CDCEE2800B31DA6 /* MeteoriteLandingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F202DC11CDCEE2800B31DA6 /* MeteoriteLandingTests.swift */; };
 		0F202DCD1CDCEE2800B31DA6 /* MeteoriteLandingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F202DCC1CDCEE2800B31DA6 /* MeteoriteLandingUITests.swift */; };
+		0F93925A1CE320D100EC2221 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9392591CE320D100EC2221 /* Cache.swift */; };
+		0F93925C1CE349F000EC2221 /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93925B1CE349F000EC2221 /* APIHandler.swift */; };
+		0F93925E1CE34DE300EC2221 /* MeteoriteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F93925D1CE34DE300EC2221 /* MeteoriteCollection.swift */; };
 		0FD2F6921CDF4B1D00253ED7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD2F6911CDF4B1D00253ED7 /* Reachability.swift */; };
 		0FD2F6941CDFB15C00253ED7 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD2F6931CDFB15C00253ED7 /* NavigationController.swift */; };
 		0FD2F6961CE0DF0200253ED7 /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD2F6951CE0DF0200253ED7 /* LaunchScreenViewController.swift */; };
@@ -54,6 +57,9 @@
 		0F202DC81CDCEE2800B31DA6 /* MeteoriteLandingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeteoriteLandingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F202DCC1CDCEE2800B31DA6 /* MeteoriteLandingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeteoriteLandingUITests.swift; sourceTree = "<group>"; };
 		0F202DCE1CDCEE2800B31DA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F9392591CE320D100EC2221 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		0F93925B1CE349F000EC2221 /* APIHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		0F93925D1CE34DE300EC2221 /* MeteoriteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteoriteCollection.swift; sourceTree = "<group>"; };
 		0FD2F6911CDF4B1D00253ED7 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		0FD2F6931CDFB15C00253ED7 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		0FD2F6951CE0DF0200253ED7 /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
@@ -117,11 +123,14 @@
 			isa = PBXGroup;
 			children = (
 				0F202DAE1CDCEE2800B31DA6 /* TableViewController.swift */,
+				0F9392591CE320D100EC2221 /* Cache.swift */,
 				0FD2F6911CDF4B1D00253ED7 /* Reachability.swift */,
 				0FFC26091CDE076B0067215B /* DetailViewController.swift */,
 				0FD2F6931CDFB15C00253ED7 /* NavigationController.swift */,
 				0FFC26071CDDF19C0067215B /* TableViewCell.swift */,
 				0FFC26051CDDE7A80067215B /* Meteorite.swift */,
+				0F93925D1CE34DE300EC2221 /* MeteoriteCollection.swift */,
+				0F93925B1CE349F000EC2221 /* APIHandler.swift */,
 				0FD2F6951CE0DF0200253ED7 /* LaunchScreenViewController.swift */,
 				0F202DB01CDCEE2800B31DA6 /* Main.storyboard */,
 				0F202DDA1CDCEE4300B31DA6 /* Support Files */,
@@ -361,11 +370,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FFC26061CDDE7A80067215B /* Meteorite.swift in Sources */,
+				0F93925A1CE320D100EC2221 /* Cache.swift in Sources */,
 				0FFC26081CDDF19C0067215B /* TableViewCell.swift in Sources */,
 				0FD2F6961CE0DF0200253ED7 /* LaunchScreenViewController.swift in Sources */,
+				0F93925E1CE34DE300EC2221 /* MeteoriteCollection.swift in Sources */,
 				0FD2F6921CDF4B1D00253ED7 /* Reachability.swift in Sources */,
 				0FFC260A1CDE076B0067215B /* DetailViewController.swift in Sources */,
 				0F202DAF1CDCEE2800B31DA6 /* TableViewController.swift in Sources */,
+				0F93925C1CE349F000EC2221 /* APIHandler.swift in Sources */,
 				0FD2F6941CDFB15C00253ED7 /* NavigationController.swift in Sources */,
 				0F202DAD1CDCEE2800B31DA6 /* AppDelegate.swift in Sources */,
 			);

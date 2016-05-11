@@ -44,15 +44,6 @@ class DetailViewController: UITableViewController {
         let fontDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController!.navigationBar.titleTextAttributes = fontDictionary
         self.title = self.name
-
-        
-        print(self.recclass)
-//        self.navigationController?.navigationBar.translucent = true
-//        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//        self.navigationController?.navigationBar.backgroundColor = UIColor.blackColor()
-//        // self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.43, green: 0.77, blue: 0.14, alpha: 0.7)
-        
-        // init labels
     }
     
     override func viewDidLoad() {
