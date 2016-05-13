@@ -10,14 +10,14 @@ import Foundation
 import CoreLocation
 
 class Meteorite {
-    let name: String
-    let dateOfImpact: NSDate
-    let mass: Float
-    let id: Int
-    let recclass: String
-    let fall: String
-    let longitude: Double
-    let latitude: Double
+    var name = String()
+    var dateOfImpact = NSDate()
+    var mass = Float()
+    var id = Int()
+    var recclass = String()
+    var fall = String()
+    var longitude = Double()
+    var latitude = Double()
     
     init(name: String, year: String, mass: String, id: Int, recclass: String, longitude: Double, latitude: Double, fall: String) {
         let dateFormatter = NSDateFormatter()
@@ -33,4 +33,9 @@ class Meteorite {
         self.latitude = latitude
         self.fall = fall
     }
+    
+    init () {
+        
+    }
+    
 }

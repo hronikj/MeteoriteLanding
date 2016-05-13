@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class TableViewController: UITableViewController {
+    var meteoriteCollection: MeteoriteCollection = MeteoriteCollection()
+    
     @IBAction func searchAndFilter(sender: UIBarButtonItem) {
         func reload() {
             self.tableView.reloadData()
@@ -40,15 +40,13 @@ class TableViewController: UITableViewController {
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
-    var meteoriteCollection: MeteoriteCollection = MeteoriteCollection()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let cache = Cache()
         if !cache.cacheLoaded {
-            let alert = UIAlertController(title: "No Internet Connection!", message: "This App Requires an Internet connection to Load the Data for the First Time. Please Connect to the Internet.", preferredStyle: .Alert)
+            let alertMessage = "This app requires an internet connection to load the data. Please connect to the Internet."
+            let alert = UIAlertController(title: "No Internet Connection!", message: alertMessage, preferredStyle: .Alert)
             alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
@@ -62,76 +60,6 @@ class TableViewController: UITableViewController {
         }
         
     }
-    
-//    func prepareCache() {
-//        let memoryCapacity = 500 * 1024 * 1024 // 500 MB
-//        let diskCapacity = 500 * 1024 * 1024 // 500 MB
-//        let cache = NSURLCache(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, diskPath: "shared_cache")
-//        
-//        let configuration =  NSURLSessionConfiguration.defaultSessionConfiguration()
-//        let defaultHeaders = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders
-//        configuration.HTTPAdditionalHeaders = defaultHeaders
-//        
-//        if let lastUpdate = self.userDefaults.valueForKey("lastUpdate") {
-//            // I have last update
-//            if isDateToday(lastUpdate as! NSDate) {
-//                // date is today so I'm just gonna return the cache
-//                // Offline mode: use the cache (no matter how out of date), but don’t load from the network
-//                configuration.requestCachePolicy = .ReturnCacheDataDontLoad
-//            } else if Reachability.isConnectedToNetwork() {
-//                // Don’t use the cache
-//                // Date is not today and I'm connecte to network, so I'll fetch new data by force
-//                configuration.requestCachePolicy = .ReloadIgnoringLocalCacheData
-//                self.userDefaults.setObject(NSDate(), forKey: "lastUpdate")
-//                self.userDefaults.synchronize()
-//            } else {
-//                // Not connected to network! I'm just gonna return cache!
-//                configuration.requestCachePolicy = .ReturnCacheDataDontLoad
-//            }
-//        } else if Reachability.isConnectedToNetwork() {
-//            // I dont have last update and i have connection so i'll fetch some data
-//            // Use the cache (no matter how out of date), or if no cached response exists, load from the network
-//            configuration.requestCachePolicy = .ReloadIgnoringLocalCacheData
-//            self.userDefaults.setObject(NSDate(), forKey: "lastUpdate")
-//            self.userDefaults.synchronize()
-//        } else {
-//            // I don't have last update and I don't have connection so i'll just display a warning...
-//            let alert = UIAlertController(title: "No Internet Connection!", message: "This App Requires an Internet connection to Load the Data for the First Time. Please Connect to the Internet.", preferredStyle: .Alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//            self.presentViewController(alert, animated: true, completion: nil)
-//        }
-//        
-//        configuration.URLCache = cache
-//    }
-    
-//    func getDataFromAPI(completionHandler: ([Meteorite]?) -> ()) -> () {
-//        var meteoriteCollection: [Meteorite] = []
-//        if let urlString = String("https://data.nasa.gov/resource/y77d-th95.json?$where=year >= '2011-01-01T00:00:00'").stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet()) {
-//        
-//            Alamofire.request(.GET, urlString, parameters: [:], headers: ["X-App-Token": "1Es0MN7hsiSHJmhP144nyR6E1"]).responseJSON {
-//                response in
-//                if let jsonResponse = response.result.value {
-//                    let json = JSON(jsonResponse)
-//                    // print(response.debugDescription)
-//                    
-//                    for (String: _, JSON: subJSON) in json {
-//                        let name = subJSON["name"].stringValue
-//                        let mass = subJSON["mass"].stringValue
-//                        let year = subJSON["year"].stringValue
-//                        let recclass = subJSON["recclass"].stringValue
-//                        let id = subJSON["id"].intValue
-//                        let fall = subJSON["fall"].stringValue
-//                        let longitude = subJSON["geolocation", "coordinates"][0].doubleValue
-//                        let latitude  = subJSON["geolocation", "coordinates"][1].doubleValue
-//                        
-//                        meteoriteCollection.append(Meteorite(name: name, year: year, mass: mass, id: id, recclass: recclass, longitude: longitude, latitude: latitude, fall: fall))
-//                    }
-//                }
-//                
-//                completionHandler(meteoriteCollection)
-//            }
-//        }
-//    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -162,15 +90,7 @@ class TableViewController: UITableViewController {
                 if let selectedCell = sender as? TableViewCell {
                     if let indexPath = tableView.indexPathForCell(selectedCell) {
                         let data = meteoriteCollection.data[indexPath.row]
-                        
-                        destinationViewController.id = data.id
-                        destinationViewController.longitude = data.longitude
-                        destinationViewController.latitude = data.latitude
-                        destinationViewController.name = data.name
-                        destinationViewController.mass = data.mass
-                        destinationViewController.fall = data.fall
-                        destinationViewController.year = data.dateOfImpact
-                        destinationViewController.recclass = data.recclass
+                        destinationViewController.data = data
                     }
                 }
             }
@@ -178,4 +98,3 @@ class TableViewController: UITableViewController {
     }
 
 }
-

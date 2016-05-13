@@ -15,6 +15,8 @@ class LaunchScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // splash screen image
         self.imageView.image = UIImage(named: "launch")
         self.imageView.layer.borderWidth = 1.0
         self.imageView.layer.borderColor = UIColor.whiteColor().CGColor
@@ -29,16 +31,7 @@ class LaunchScreenViewController: UIViewController {
         blurredEffectView.frame = self.imageView.bounds
         self.imageView.addSubview(blurredEffectView)
 
-        
         self.bounceImage()
-        
-//        let seconds = 2.0
-//        let delay = seconds * Double(NSEC_PER_SEC)
-//        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-//        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-//            self.performSegueWithIdentifier("LaunchScreenSegueIdentifier", sender: nil)
-//        })
-    
     }
     
     func bounceImage() {
